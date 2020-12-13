@@ -80,11 +80,25 @@ app.get('/food-items', async (req, res) => {
 })
 
 app.post('/food-items', async (req, res) => {
-    try{
-        // TODO
+    try{  
+    
+    if(this.calories<0){
+        res.status(400).json({message:'calories should be a positive number'})
     }
+    if(!this.name || !this.category || !this.calories){
+        res.status(400).json({message:'body is missing'})     
+    }
+    if(category.length<3 || this.name.length<2 ||calories<0){
+        res.status(400).json({message:'malformed request'})
+    }
+    if(category.length<4){
+        res.status(400).json({message:'not a valid category'})
+    }
+    res.status(201).json({message:'created'})
+    
+}
     catch(err){
-        // TODO
+        
     }
 })
 
